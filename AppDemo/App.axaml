@@ -1,15 +1,17 @@
-<Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="AppDemo.App"
-             xmlns:local="using:AppDemo"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+<Application
+    RequestedThemeVariant="Default"
+    x:Class="AppDemo.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:local="using:AppDemo"
+    xmlns:themes="clr-namespace:Material.Styles.Themes;assembly=Material.Styles"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <local:ViewLocator />
     </Application.DataTemplates>
-  
+
     <Application.Styles>
-        <FluentTheme />
+        <themes:MaterialTheme PrimaryColor="Purple" SecondaryColor="Lime" />
     </Application.Styles>
 </Application>
