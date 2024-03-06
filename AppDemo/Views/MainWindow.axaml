@@ -7,6 +7,7 @@
     x:Class="AppDemo.Views.MainWindow"
     x:DataType="vm:MainWindowViewModel"
     xmlns="https://github.com/avaloniaui"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
     xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -22,8 +23,15 @@
     </Design.DataContext>
 
     <Window.Styles>
-        <Style Selector="TextBlock.Headline6">
-            <Setter Property="FontFamily" Value="Roboto" />
+        <Style Selector="TextBlock.Headline">
+            <Setter Property="FontFamily" Value="Microsoft YaHei" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="Foreground" Value="White" />
+            <!--  其他样式属性  -->
+        </Style>
+        <Style Selector="TextBlock.text">
+            <Setter Property="FontFamily" Value="Microsoft YaHei" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Foreground" Value="Black" />
@@ -32,9 +40,35 @@
     </Window.Styles>
 
     <StackPanel>
+        <DockPanel LastChildFill="True">
+            <controls:ColorZone
+                DockPanel.Dock="Top"
+                Height="56"
+                HorizontalAlignment="Stretch"
+                Mode="PrimaryMid"
+                VerticalAlignment="Top"
+                ZIndex="1">
+                <Grid ColumnDefinitions="24,32,*,32,Auto" Margin="16">
+                    <ToggleButton
+                        Height="32"
+                        Padding="4"
+                        Width="32">
+                        <avalonia:MaterialIcon
+                            Height="24"
+                            Kind="Menu"
+                            Width="24" />
+                    </ToggleButton>
+                    <TextBlock
+                        Classes="Headline"
+                        Grid.Column="2"
+                        Text="控制器检程序"
+                        VerticalAlignment="Center" />
+                </Grid>
+            </controls:ColorZone>
+        </DockPanel>
         <controls:Card Margin="16">
             <TextBlock
-                Classes="Headline6"
+                Classes="text"
                 HorizontalAlignment="Center"
                 Text="{Binding Greeting}"
                 VerticalAlignment="Center" />
