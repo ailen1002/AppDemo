@@ -1,0 +1,20 @@
+﻿<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="AppDemo.Pages.Home"
+    x:DataType="vm:MainWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:AppDemo.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <controls:Card Margin="16">
+        <TextBlock
+            HorizontalAlignment="Center"
+            Text="{Binding Greeting}"
+            VerticalAlignment="Center" />
+    </controls:Card>
+</UserControl>

@@ -11,6 +11,7 @@
     xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:AppDemo.Pages"
     xmlns:vm="using:AppDemo.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
@@ -39,22 +40,24 @@
         </Style>
     </Window.Styles>
 
-    <controls:NavigationDrawer LeftDrawerOpened="{Binding ElementName=NavDrawerSwitch, Path=IsChecked, Mode=TwoWay}">
+    <controls:NavigationDrawer LeftDrawerOpened="{Binding ElementName=NavDrawerSwitch, Path=IsChecked, Mode=TwoWay}" Name="LeftDrawer">
         <controls:NavigationDrawer.LeftDrawerContent>
-            <StackPanel>
-                <ListBox SelectionMode="Single">
-                    <ListBox.Styles>
-                        <Style Selector="ListBoxItem">
-                            <Setter Property="Height" Value="48" />
-                            <Setter Property="Padding" Value="16,0" />
-                            <Setter Property="VerticalContentAlignment" Value="Center" />
-                        </Style>
-                    </ListBox.Styles>
-                    <ListBoxItem>Home</ListBoxItem>
-                    <ListBoxItem>Settings</ListBoxItem>
-                    <!--  Add more menu items as needed  -->
-                </ListBox>
-            </StackPanel>
+            <ScrollViewer>
+                <StackPanel>
+                    <ListBox Name="DrawerList">
+                        <ListBox.Styles>
+                            <Style Selector="ListBoxItem">
+                                <Setter Property="Height" Value="48" />
+                                <Setter Property="Padding" Value="16,0" />
+                                <Setter Property="VerticalContentAlignment" Value="Center" />
+                            </Style>
+                        </ListBox.Styles>
+                        <ListBoxItem>Home</ListBoxItem>
+                        <ListBoxItem>Settings</ListBoxItem>
+                        <!--  Add more menu items as needed  -->
+                    </ListBox>
+                </StackPanel>
+            </ScrollViewer>
         </controls:NavigationDrawer.LeftDrawerContent>
         <StackPanel>
             <DockPanel LastChildFill="True">
@@ -84,13 +87,24 @@
                     </Grid>
                 </controls:ColorZone>
             </DockPanel>
-            <controls:Card Margin="16">
-                <TextBlock
-                    Classes="text"
-                    HorizontalAlignment="Center"
-                    Text="{Binding Greeting}"
-                    VerticalAlignment="Center" />
-            </controls:Card>
+            <ScrollViewer Name="MainScroller">
+                <Border>
+                    <Carousel HorizontalAlignment="Stretch" Name="PageCarousel">
+                        <Carousel.Styles>
+                            <Style Selector="Carousel#PageCarousel:not(.no-transitions)">
+                                <Setter Property="PageTransition">
+                                    <PageSlide
+                                        Duration="0.25"
+                                        SlideInEasing="CircularEaseOut"
+                                        SlideOutEasing="CircularEaseOut" />
+                                </Setter>
+                            </Style>
+                        </Carousel.Styles>
+                        <pages:Home />
+                        <pages:Settings />
+                    </Carousel>
+                </Border>
+            </ScrollViewer>
         </StackPanel>
     </controls:NavigationDrawer>
 </Window>
