@@ -5,16 +5,187 @@
     x:Class="AppDemo.Pages.Home"
     x:DataType="vm:MainWindowViewModel"
     xmlns="https://github.com/avaloniaui"
+    xmlns:assists="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
     xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:AppDemo.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <controls:Card Margin="16">
-        <TextBlock
-            HorizontalAlignment="Center"
-            Text="{Binding Greeting}"
-            VerticalAlignment="Center" />
-    </controls:Card>
+    <StackPanel>
+        <WrapPanel Orientation="Horizontal">
+            <controls:Card Margin="5">
+                <StackPanel Width="600">
+                    <Grid ColumnDefinitions="80,200,80,200" RowDefinitions="*,*">
+                        <TextBlock
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            HorizontalAlignment="Center"
+                            Text="序列号："
+                            VerticalAlignment="Center" />
+                        <TextBox
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            UseFloatingWatermark="True"
+                            assists:TextFieldAssist.Label="Serial Number" />
+                        <TextBlock
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            Text="IMEI："
+                            VerticalAlignment="Center" />
+                        <TextBox
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            UseFloatingWatermark="True"
+                            assists:TextFieldAssist.Label="imei number" />
+                        <TextBlock
+                            Grid.Column="2"
+                            Grid.Row="0"
+                            HorizontalAlignment="Center"
+                            Text="版本号："
+                            VerticalAlignment="Center" />
+                        <TextBox
+                            Grid.Column="3"
+                            Grid.Row="0"
+                            UseFloatingWatermark="True"
+                            assists:TextFieldAssist.Label="Text field" />
+                        <TextBlock
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            Text="CCID："
+                            VerticalAlignment="Center" />
+                        <TextBox
+                            Grid.Column="3"
+                            Grid.Row="1"
+                            UseFloatingWatermark="True"
+                            assists:TextFieldAssist.Label="ccid number" />
+                    </Grid>
+                </StackPanel>
+            </controls:Card>
+            <controls:Card Margin="5">
+                <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*">
+                    <Button
+                        Content="蜂鸣检测"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Height="40"
+                        Margin="5"
+                        ToolTip.Tip="蜂鸣检测" />
+
+                    <Button
+                        Content="灯光检测"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Height="40"
+                        Margin="5"
+                        ToolTip.Tip="灯光检测" />
+
+                    <Button
+                        Content="拨码检测"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Height="40"
+                        Margin="5"
+                        ToolTip.Tip="拨码检测" />
+
+                    <Button
+                        Content="时间检测"
+                        Grid.Column="3"
+                        Grid.Row="0"
+                        Height="40"
+                        Margin="5"
+                        ToolTip.Tip="时间检测" />
+                </Grid>
+            </controls:Card>
+            <controls:Card Margin="5">
+                <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                    <Button
+                        Content="开始检测"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Height="40"
+                        Margin="5"
+                        ToolTip.Tip="开始检测"
+                        Width="150" />
+
+                    <Button
+                        Content="保存结果"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Height="40"
+                        Margin="5"
+                        ToolTip.Tip="保存结果"
+                        Width="150" />
+                </Grid>
+            </controls:Card>
+        </WrapPanel>
+        <Expander Margin="5" VerticalAlignment="Top">
+            <Expander.Header>
+                模拟量检测
+            </Expander.Header>
+            <DataGrid
+                BorderBrush="Gray"
+                BorderThickness="1"
+                GridLinesVisibility="All"
+                IsReadOnly="True"
+                Margin="20">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="名字" Width="*" />
+                    <DataGridTextColumn Header="姓氏" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Expander>
+        <Expander Margin="5" VerticalAlignment="Top">
+            <Expander.Header>
+                开关量检测
+            </Expander.Header>
+            <Grid ColumnDefinitions="150,*" RowDefinitions="*,*">
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    VerticalAlignment="Center">
+                    Search
+                </TextBlock>
+                <TextBox
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Watermark="Search text"
+                    Width="200" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    VerticalAlignment="Center">
+                    Case sensitive?
+                </TextBlock>
+                <CheckBox Grid.Column="1" Grid.Row="1" />
+            </Grid>
+        </Expander>
+        <Expander Margin="5" VerticalAlignment="Top">
+            <Expander.Header>
+                其他检测项目
+            </Expander.Header>
+            <Grid ColumnDefinitions="150,*" RowDefinitions="*,*">
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    VerticalAlignment="Center">
+                    Search
+                </TextBlock>
+                <TextBox
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Watermark="Search text"
+                    Width="200" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    VerticalAlignment="Center">
+                    Case sensitive?
+                </TextBlock>
+                <CheckBox Grid.Column="1" Grid.Row="1" />
+            </Grid>
+        </Expander>
+    </StackPanel>
 </UserControl>
